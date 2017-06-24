@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 	} else extension = "";
 
 	//Open config file and import config to map extensionApplicationMap if file existent
-	fstream file("config", fstream::in | fstream::out);
+	fstream file("/usr/share/sesame/config", fstream::in | fstream::out);
 
 	if (file.good()) {
 		fileImportToMap(file);
@@ -106,6 +106,7 @@ int main(int argc, char* argv[]) {
 					break;
 				} else break;
 			} else {
+				cout << "SAVING" << endl;
 				fileExportMap(file);
 				break;
 			}
@@ -117,7 +118,7 @@ int main(int argc, char* argv[]) {
 }
 
 void fileExportMap(fstream &file) {
-	file.open("config", fstream::in | fstream::out | fstream::trunc);
+	file.open("/usr/share/sesame/config", fstream::in | fstream::out | fstream::trunc);
 	for (auto pair : extensionApplicationMap) {
 		auxString = pair.first + " " + pair.second + "\n";
 		file.write(auxString.c_str(), auxString.size());
