@@ -59,8 +59,7 @@ int main(int argc, char* argv[]) {
 	auxInt = extension.rfind(".");
 	if (auxInt != -1) {
 		extension = extension.substr(auxInt);
-		extension = extension.erase(0, 1);
-	} else extension = "";
+	} else extension = "none";
 
 	//Open config file and import config to map extensionApplicationMap if file existent
 	fstream file("/usr/share/sesame/config", fstream::in | fstream::out);
@@ -72,7 +71,7 @@ int main(int argc, char* argv[]) {
 
 	//Ask for application if non is defined 
 	if (extensionApplicationMap.find(extension) == extensionApplicationMap.end()) {
-		auxChar = optionsInput("No specified application for " + extension + " extension\nWish to add one?", "YN");
+		auxChar = optionsInput("No specified application for " + extension + "\nWish to add one?", "YN");
 		if (auxChar == 'y') {
 			insertInMap(extension, input("Application name:"));
 		} else return 0;
@@ -106,7 +105,6 @@ int main(int argc, char* argv[]) {
 					break;
 				} else break;
 			} else {
-				cout << "SAVING" << endl;
 				fileExportMap(file);
 				break;
 			}
