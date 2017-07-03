@@ -5,4 +5,4 @@ Opens file with associate default application. Similar to the open command in Ma
 1. make
 2. make install
 3. Enjoy
-4.(Removing) make remove
+4. (Removing) make remove
